@@ -98,7 +98,7 @@ WTI\_Forecasting\_Artefact/
 
 └── documentation/
 
-&#x20;   ├── flowchart.png
+│    ├── flowchart.png
 
 
 
