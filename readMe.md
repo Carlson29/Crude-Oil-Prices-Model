@@ -16,33 +16,33 @@ The main aim of this project is to forecast WTI returns using Macro-financial va
 
 **Data** 
 
-Initial data period: 2010–2024
+Initial data period: \*\*2010–2024\*\*  
 
-Approximate number of observations: 3,957
+Approximate number of observations: \*\*3,957\*\*
 
 
 
-| Variable Name          | Source        | Frequency | ID                  |
+| Variable Name            | Source         | Frequency | ID               |
 
-|------------------------|---------------|-----------|---------------------|
+|--------------------------|----------------|-----------|------------------|
 
-| WTI                    | FRED API      | Daily     | DCOILWTICO          |
+| WTI                      | FRED API       | Daily     | DCOILWTICO       |
 
-| S\&P 500                | Yahoo Finance | Daily     | ^GSPC               |
+| S\&P 500                  | Yahoo Finance  | Daily     | ^GSPC            |
 
-| Volatility Index (VIX) | FRED API      | Daily     | VIXCLS              |
+| Volatility Index (VIX)   | FRED API       | Daily     | VIXCLS           |
 
-| USD                    | FRED API      | Daily     | DTWEXBGS            |
+| USD                      | FRED API       | Daily     | DTWEXBGS         |
 
-| Gold                   | Yahoo Finance | Daily     | GC=F                |
+| Gold                     | Yahoo Finance  | Daily     | GC=F             |
 
-| Yield Difference       | FRED API      | Daily     | DGS3 and DGS10      |
+| Yield Difference         | FRED API       | Daily     | DGS3, DGS10      |
 
-| Oil Volatility (OVX)   | Yahoo Finance | Daily     | ^OVX                |
+| Oil Volatility (OVX)     | Yahoo Finance  | Daily     | ^OVX             |
 
-| Brent                  | FRED API      | Daily     | DCOILBRENTEU        |
+| Brent                    | FRED API       | Daily     | DCOILBRENTEU     |
 
-| Industrial Production  | FRED API      | Monthly   | INDPRO              |
+| Industrial Production    | FRED API       | Monthly   | INDPRO           |
 
 
 
