@@ -1,0 +1,63 @@
+{
+  "dataset": {
+    "observations": 773,
+    "features": 19,
+    "start_date": "2010-03-12",
+    "end_date": "2024-12-27"
+  },
+  "split": {
+    "strategy": "chronological_80_20",
+    "training_observations": 618,
+    "test_observations": 155,
+    "training_end": "2022-01-07",
+    "test_start": "2022-01-14"
+  },
+  "target_alignment_verified": true,
+  "metrics": [
+    {
+      "model": "Zero",
+      "rmse": 0.05217396399103565,
+      "mae": 0.03948316296466506,
+      "r2": -0.00032565546648344323,
+      "directional_accuracy": 0.47096774193548385,
+      "dm_vs_persistence_statistic": 4.708839934353888,
+      "dm_vs_persistence_p_value": 2.4913060923711104e-06
+    },
+    {
+      "model": "Training mean",
+      "rmse": 0.05217489371131333,
+      "mae": 0.03948024867541318,
+      "r2": -0.00036130663274924757,
+      "directional_accuracy": 0.5290322580645161,
+      "dm_vs_persistence_statistic": 4.708996937132255,
+      "dm_vs_persistence_p_value": 2.489388115279217e-06
+    },
+    {
+      "model": "Random Forest",
+      "rmse": 0.05367964542341303,
+      "mae": 0.04098492428662789,
+      "r2": -0.05889528880178441,
+      "directional_accuracy": 0.41935483870967744,
+      "dm_vs_persistence_statistic": 4.556983156548945,
+      "dm_vs_persistence_p_value": 5.189358375173894e-06
+    },
+    {
+      "model": "Linear Regression",
+      "rmse": 0.05741302434459627,
+      "mae": 0.0437828271167225,
+      "r2": -0.21130800892188195,
+      "directional_accuracy": 0.5161290322580645,
+      "dm_vs_persistence_statistic": 4.353953728401718,
+      "dm_vs_persistence_p_value": 1.337039398201979e-05
+    },
+    {
+      "model": "Persistence",
+      "rmse": 0.08011430494381591,
+      "mae": 0.061498856547608435,
+      "r2": -1.3585977368735116,
+      "directional_accuracy": 0.47096774193548385,
+      "dm_vs_persistence_statistic": 0.0,
+      "dm_vs_persistence_p_value": 1.0
+    }
+  ]
+}
