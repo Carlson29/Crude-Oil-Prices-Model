@@ -32,8 +32,10 @@ def benchmark_models(random_state: int = 42, include_xgboost: bool = False) -> d
             ]
         ),
         "Random Forest": RandomForestRegressor(
-            n_estimators=400,
-            min_samples_leaf=4,
+            n_estimators=102,
+            max_depth=7,
+            min_samples_split=7,
+            min_samples_leaf=10,
             max_features="sqrt",
             random_state=random_state,
             n_jobs=-1,

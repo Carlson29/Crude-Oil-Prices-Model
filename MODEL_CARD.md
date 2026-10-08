@@ -11,13 +11,15 @@ artefact. It is **not** a trading system or financial advice.
 - **Period:** 12 March 2010 to 27 December 2024
 - **Frequency:** weekly model-ready observations
 - **Observations:** 773
-- **Predictors:** 19
+- **Predictors:** 18 in the companion benchmark
 - **Target:** next observed weekly WTI return
 - **Sources:** FRED and Yahoo Finance, represented by the committed processed dataset
 
 Predictors cover WTI lags and rolling behaviour, the S&P 500, US dollar, gold, Brent, volatility
 indices, the Treasury yield spread and industrial production. The repository also preserves the raw
-daily dataset and the complete research notebook.
+daily dataset and the complete research notebook. Although the committed modelling table retains
+`WTI_roll4` for provenance, the companion pipeline excludes it because the final dissertation setup
+removed it due to its exact relationship with WTI and the early WTI lags.
 
 ## Evaluation contract
 
@@ -30,10 +32,14 @@ The reproducible companion benchmark uses an 80/20 chronological split:
 - Scaling and fitting use training data only
 - Zero, training-mean and persistence baselines are reported alongside fitted models
 - Diebold–Mariano comparisons use one-step squared forecast loss against persistence
+- The Random Forest uses the dissertation's tuned configuration: 102 trees, depth 7, split 7,
+  leaf 10 and square-root feature sampling
 
 The original notebook contains the broader Random Forest, XGBoost, Prophet and sequence-LSTM
 experiments, supplementary regime and classification work, SHAP analysis and diagnostics. The
-companion benchmark intentionally stays compact enough for CI and reviewer reproduction.
+companion benchmark intentionally stays compact enough for CI and reviewer reproduction. **It is not
+a reproduction of the dissertation's tuned final model comparison, in which Prophet performed best
+overall.**
 
 ## Reproducible companion results
 
@@ -41,7 +47,7 @@ companion benchmark intentionally stays compact enough for CI and reviewer repro
 | --- | ---: | ---: | ---: | ---: |
 | Zero | **0.0522** | 0.0395 | -0.000 | 47.1% |
 | Training mean | 0.0522 | **0.0395** | -0.000 | **52.9%** |
-| Random Forest | 0.0537 | 0.0410 | -0.059 | 41.9% |
+| Random Forest | 0.0532 | 0.0408 | -0.038 | 45.2% |
 | Linear Regression | 0.0574 | 0.0438 | -0.211 | 51.6% |
 | Persistence | 0.0801 | 0.0615 | -1.359 | 47.1% |
 
