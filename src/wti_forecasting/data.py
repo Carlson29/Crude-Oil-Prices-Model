@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 REQUIRED_COLUMNS = {"Date", "WTI", "Target", "Direction"}
-NON_FEATURE_COLUMNS = {"Date", "Target", "Direction"}
+NON_FEATURE_COLUMNS = {"Date", "Target", "Direction", "WTI_roll4"}
 
 
 def load_model_data(path: str | Path) -> pd.DataFrame:
@@ -34,7 +34,12 @@ def load_model_data(path: str | Path) -> pd.DataFrame:
 
 
 def feature_columns(frame: pd.DataFrame) -> list[str]:
-    """Return predictor names while keeping target metadata out of the feature matrix."""
+    """Return dissertation-aligned predictors, excluding metadata and ``WTI_roll4``.
+
+    The final dissertation modelling setup removed ``WTI_roll4`` because of its exact relationship
+    with contemporaneous WTI returns and their early lags. Keeping the exclusion here prevents the
+    compact companion benchmark from silently using a feature rejected by the main study.
+    """
     return [column for column in frame.columns if column not in NON_FEATURE_COLUMNS]
 
 

@@ -19,6 +19,7 @@ def sample_frame(rows: int = 10) -> pd.DataFrame:
             "Date": dates,
             "WTI": wti,
             "WTI_lag1": [0.0, *wti[:-1]],
+            "WTI_roll4": [0.0, *wti[:-1]],
             "Target": [*wti[1:], 0.25],
             "Direction": [int(value > 0) for value in [*wti[1:], 0.25]],
         }

@@ -1,7 +1,7 @@
 {
   "dataset": {
     "observations": 773,
-    "features": 19,
+    "features": 18,
     "start_date": "2010-03-12",
     "end_date": "2024-12-27"
   },
@@ -34,18 +34,18 @@
     },
     {
       "model": "Random Forest",
-      "rmse": 0.05367964542341303,
-      "mae": 0.04098492428662789,
-      "r2": -0.05889528880178441,
-      "directional_accuracy": 0.41935483870967744,
-      "dm_vs_persistence_statistic": 4.556983156548945,
-      "dm_vs_persistence_p_value": 5.189358375173894e-06
+      "rmse": 0.053153613731343106,
+      "mae": 0.040807503058989156,
+      "r2": -0.03824376383132155,
+      "directional_accuracy": 0.45161290322580644,
+      "dm_vs_persistence_statistic": 4.6495747926573054,
+      "dm_vs_persistence_p_value": 3.3262005006098486e-06
     },
     {
       "model": "Linear Regression",
-      "rmse": 0.05741302434459627,
+      "rmse": 0.05741302434459628,
       "mae": 0.0437828271167225,
-      "r2": -0.21130800892188195,
+      "r2": -0.2113080089218824,
       "directional_accuracy": 0.5161290322580645,
       "dm_vs_persistence_statistic": 4.353953728401718,
       "dm_vs_persistence_p_value": 1.337039398201979e-05

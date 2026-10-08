@@ -27,14 +27,18 @@ class evidence. It asks:
 
 ## Reproducible benchmark result
 
-The committed companion benchmark uses 773 weekly observations, 19 predictors and an 80/20
+> **Scope matters:** this companion benchmark deliberately uses a smaller, deterministic model
+> subset for fast reproducibility and CI; it is **not** a reproduction of the dissertation's tuned
+> final model comparison, in which Prophet performed best overall.
+
+The committed companion benchmark uses 773 weekly observations, 18 predictors and an 80/20
 chronological split. The held-out period starts on 14 January 2022.
 
 | Model | RMSE ↓ | MAE ↓ | R² ↑ | Directional accuracy ↑ |
 | --- | ---: | ---: | ---: | ---: |
 | **Zero** | **0.0522** | 0.0395 | -0.000 | 47.1% |
 | Training mean | 0.0522 | **0.0395** | -0.000 | **52.9%** |
-| Random Forest | 0.0537 | 0.0410 | -0.059 | 41.9% |
+| Random Forest | 0.0532 | 0.0408 | -0.038 | 45.2% |
 | Linear Regression | 0.0574 | 0.0438 | -0.211 | 51.6% |
 | Persistence | 0.0801 | 0.0615 | -1.359 | 47.1% |
 
@@ -44,6 +48,12 @@ chronological split. The held-out period starts on 14 January 2022.
 that difficult baseline in the compact benchmark. This is a useful negative result: complexity alone
 does not create forecasting skill. The broader notebook retains the Prophet, XGBoost, LSTM, SHAP,
 classification and regime experiments for deeper analysis.
+
+For consistency with the dissertation, the companion Random Forest uses the tuned configuration of
+102 trees, maximum depth 7, minimum split size 7, minimum leaf size 10 and square-root feature
+sampling. `WTI_roll4` remains in the committed modelling table for provenance but is explicitly
+excluded from companion predictors because the final dissertation setup removed it due to its exact
+relationship with WTI and the early WTI lags.
 
 Read the complete assumptions and limitations in the [model card](MODEL_CARD.md).
 
@@ -76,7 +86,8 @@ The original daily extraction contains approximately 3,957 observations.
 | Industrial production | FRED `INDPRO` | Macroeconomic activity |
 
 The processed CSV is committed so the benchmark and dashboard work without network access or API
-credentials.
+credentials. It contains `WTI_roll4` for traceability, but the companion feature-selection contract
+excludes that column to match the final dissertation modelling decision.
 
 ## Architecture
 
@@ -206,5 +217,6 @@ reviewed without it.
 
 > Developed an end-to-end WTI-return forecasting study using macro-financial indicators, comparing
 > statistical, ensemble, boosting and sequence models against naïve baselines under chronological
-> validation. Added leakage tests, Diebold–Mariano comparisons, explainability, reproducible benchmark
-> artefacts, CI and an interactive evidence dashboard.
+> validation, with Prophet performing best in the dissertation's final comparison. Added leakage
+> tests, Diebold–Mariano comparisons, explainability, reproducible benchmark artefacts, CI and an
+> interactive evidence dashboard.

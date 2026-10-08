@@ -18,6 +18,7 @@ def test_benchmark_writes_recruiter_facing_artifacts(tmp_path):
             "WTI": wti,
             "Macro": rng.normal(0, 1, rows),
             "WTI_lag1": np.r_[0.0, wti[:-1]],
+            "WTI_roll4": np.r_[0.0, wti[:-1]],
             "Target": np.r_[wti[1:], 0.01],
             "Direction": (np.r_[wti[1:], 0.01] > 0).astype(int),
         }
@@ -37,4 +38,5 @@ def test_benchmark_writes_recruiter_facing_artifacts(tmp_path):
     assert (output_dir / "model_comparison.png").exists()
     payload = json.loads((output_dir / "benchmark_metrics.json").read_text(encoding="utf-8"))
     assert payload["split"]["strategy"] == "chronological_80_20"
+    assert payload["dataset"]["features"] == 3
     assert payload["target_alignment_verified"] is True

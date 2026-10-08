@@ -121,6 +121,11 @@ metric_map = {
 
 with benchmark_tab:
     st.markdown("## Held-out model comparison")
+    st.warning(
+        "Scope: this smaller deterministic companion benchmark supports fast reproduction and CI. "
+        "It is not a reproduction of the dissertation's tuned final comparison, in which Prophet "
+        "performed best overall."
+    )
     column, as_percentage = metric_map[metric_label]
     comparison = metrics[metrics["model"].isin(selected_models)][["model", column]].copy()
     if as_percentage:
@@ -174,6 +179,8 @@ with design_tab:
             - Mean and fitted-model parameters are learned from training data only.
             - Baselines are reported beside ML models, not hidden.
             - Diebold–Mariano statistics compare squared forecast loss against persistence.
+            - `WTI_roll4` is excluded to match the final dissertation feature decision.
+            - Random Forest uses the tuned dissertation settings: 102 trees, depth 7, split 7, leaf 10 and sqrt features.
             - The original notebook retains Prophet, XGBoost, LSTM, SHAP and supplementary experiments.
             """
         )
@@ -187,8 +194,9 @@ with design_tab:
 with study_tab:
     st.markdown("## Saved evidence from the original 169-cell study")
     st.caption(
-        "The companion benchmark does not replace the original experiments; it adds a compact, "
-        "testable path for reviewers."
+        "The dissertation's tuned final comparison found Prophet performed best overall. The "
+        "companion benchmark does not replace those experiments; it adds a compact, testable path "
+        "for reviewers."
     )
     images = [
         ("Main comparison", "Main_results.png"),
